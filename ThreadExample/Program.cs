@@ -79,6 +79,26 @@ namespace ThreadExample
             Thread.Sleep(1000);
             Console.WriteLine("Main thread ({0}) exiting...",
                               Thread.CurrentThread.ManagedThreadId);
+
+            Thread.Sleep(5000);
+            Thread t = new Thread(WriteY);          // Kick off a new thread
+            t.Start();                               // running WriteY()
+
+            // Simultaneously, do something on the main thread.
+            for (int i = 0; i < 1000; i++)
+            {
+                Console.Write("Hello ");
+                Thread.Sleep(200);
+            }
+        }
+
+        static void WriteY()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                Console.Write("there! ");
+                Thread.Sleep(300);
+            }
         }
     }
 }
