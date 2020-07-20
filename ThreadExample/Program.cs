@@ -88,8 +88,11 @@ namespace ThreadExample
             for (int i = 0; i < 1000; i++)
             {
                 Console.Write("Hello ");
-                Thread.Sleep(200);
+                Thread.Sleep(20);
             }
+
+            t.Join();
+            Console.WriteLine("Thread t has ended!");
         }
 
         static void WriteY()
@@ -97,7 +100,7 @@ namespace ThreadExample
             for (int i = 0; i < 1000; i++)
             {
                 Console.Write("there! ");
-                Thread.Sleep(300);
+                Thread.Sleep(20);
             }
         }
     }
